@@ -17,32 +17,26 @@
 
 思路：核心点遍历给定字符串字符，判断以当前字符开头字符串是否等于目标字符串
 
-```go
-func strStr(haystack string, needle string) int {
-    if len(needle) == 0 {
-        return 0
+```js
+var strStr = function (haystack, needle) {
+  if (needle.length > haystack.length) {
+    return -1;
+  } else if (needle.length === 0) {
+    return 0;
+  } else {
+    for (let i = 0; i < haystack.length - needle.length + 1; i++) {
+      if (haystack.slice(i, i + needle.length) === needle) {
+        return i;
+      }
     }
-    var i, j int
-    // i不需要到len-1
-    for i = 0; i < len(haystack)-len(needle)+1; i++ {
-        for j = 0; j < len(needle); j++ {
-            if haystack[i+j] != needle[j] {
-                break
-            }
-        }
-        // 判断字符串长度是否相等
-        if len(needle) == j {
-            return i
-        }
-    }
-    return -1
-}
+    return -1;
+  }
+};
 ```
 
 需要注意点
 
-- 循环时，i 不需要到 len-1
-- 如果找到目标字符串，len(needle)==j
+- 只需要遍历原字符串中与目标字符串长度相等的字串
 
 示例 2
 
