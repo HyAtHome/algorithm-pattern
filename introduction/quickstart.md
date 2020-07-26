@@ -46,11 +46,11 @@ var strStr = function (haystack, needle) {
 
 思路：这是一个典型的应用回溯法的题目，简单来说就是穷尽所有可能性，算法模板如下
 
-```go
+```js
 result = []
 func backtrack(选择列表,路径):
     if 满足结束条件:
-        result.add(路径)
+        result.push(路径)
         return
     for 选择 in 选择列表:
         做选择
